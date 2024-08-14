@@ -2,3 +2,4 @@
 2024-06-27T18:24:24  fix(docs): handle CRLF line endings
 2024-07-19T13:41:31  chore(scan): pin the test dependencies
 2024-08-10T08:58:38  test(engine): assert exit codes in tests
+2024-08-14T15:15:45  style(output): add pagination to large reports

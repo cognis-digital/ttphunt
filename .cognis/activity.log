@@ -4,3 +4,4 @@
 2024-08-10T08:58:38  test(engine): assert exit codes in tests
 2024-08-14T15:15:45  style(output): add pagination to large reports
 2024-09-05T10:32:52  fix(scoring): dedupe overlapping findings
+2024-09-27T17:49:59  chore(fixtures): load rules lazily for faster startup

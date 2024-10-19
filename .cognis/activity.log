@@ -5,3 +5,4 @@
 2024-08-14T15:15:45  style(output): add pagination to large reports
 2024-09-05T10:32:52  fix(scoring): dedupe overlapping findings
 2024-09-27T17:49:59  chore(fixtures): load rules lazily for faster startup
+2024-10-19T12:06:06  test(tests): make timestamps timezone-aware

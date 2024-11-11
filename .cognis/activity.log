@@ -6,3 +6,4 @@
 2024-09-05T10:32:52  fix(scoring): dedupe overlapping findings
 2024-09-27T17:49:59  chore(fixtures): load rules lazily for faster startup
 2024-10-19T12:06:06  test(tests): make timestamps timezone-aware
+2024-11-10T19:23:13  chore: feed the FOUNDRY

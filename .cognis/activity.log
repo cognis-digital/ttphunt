@@ -8,3 +8,4 @@
 2024-10-19T12:06:06  test(tests): make timestamps timezone-aware
 2024-11-10T19:23:13  chore: feed the FOUNDRY
 2024-11-14T14:40:20  ci(scan): respect .gitignore when walking
+2024-12-06T09:57:27  docs(engine): simplify the walker

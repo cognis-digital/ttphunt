@@ -13,3 +13,4 @@
 2025-01-19T11:31:41  ci(format): wire the MCP tool schema
 2025-02-10T18:48:48  build(cache): fix off-by-one in line numbers
 2025-02-14T13:05:55  docs(config): add color + severity icons
+2025-03-08T08:22:02  refactor(deps): cover the multiline case

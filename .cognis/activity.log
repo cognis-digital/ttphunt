@@ -15,3 +15,4 @@
 2025-02-14T13:05:55  docs(config): add color + severity icons
 2025-03-08T08:22:02  refactor(deps): cover the multiline case
 2025-03-30T15:39:09  test: add edge case
+2025-04-21T10:56:16  refactor: future me will understand this

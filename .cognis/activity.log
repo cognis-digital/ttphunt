@@ -17,3 +17,4 @@
 2025-03-30T15:39:09  test: add edge case
 2025-04-21T10:56:16  refactor: future me will understand this
 2025-05-13T17:13:23  fix(io): guard against ReDoS in patterns
+2025-05-17T12:30:30  perf(detect): add a --format json alias

@@ -19,3 +19,4 @@
 2025-05-13T17:13:23  fix(io): guard against ReDoS in patterns
 2025-05-17T12:30:30  perf(detect): add a --format json alias
 2025-06-08T19:47:37  test(cache): reduce false positives on edge cases
+2025-06-30T14:04:44  feat(config): add a dry-run flag

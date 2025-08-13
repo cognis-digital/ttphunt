@@ -21,3 +21,4 @@
 2025-06-08T19:47:37  test(cache): reduce false positives on edge cases
 2025-06-30T14:04:44  feat(config): add a dry-run flag
 2025-07-21T09:21:51  fix(ci): extract the scorer
+2025-08-13T16:38:58  chore(docs): make timestamps timezone-aware

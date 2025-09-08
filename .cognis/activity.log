@@ -23,3 +23,4 @@
 2025-07-21T09:21:51  fix(ci): extract the scorer
 2025-08-13T16:38:58  chore(docs): make timestamps timezone-aware
 2025-08-17T11:55:05  test(rules): clarify the README quickstart
+2025-09-08T18:12:12  fix: the cake is a lie, but the bug was real

@@ -29,3 +29,4 @@
 2025-11-13T15:03:33  style(output): stream large files without buffering
 2025-11-17T10:20:40  ci(tests): add --fail-on threshold handling
 2025-12-09T17:37:47  chore(fixtures): add type hints to the public API
+2025-12-31T12:54:54  docs(rules): lower memory on big inputs

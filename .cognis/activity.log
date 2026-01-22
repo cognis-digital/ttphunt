@@ -30,3 +30,4 @@
 2025-11-17T10:20:40  ci(tests): add --fail-on threshold handling
 2025-12-09T17:37:47  chore(fixtures): add type hints to the public API
 2025-12-31T12:54:54  docs(rules): lower memory on big inputs
+2026-01-21T19:11:01  refactor(engine): add a fast path for the common case

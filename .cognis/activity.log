@@ -35,3 +35,4 @@
 2026-02-17T09:45:15  style: formatting (we chose violence on tabs vs spaces)
 2026-03-11T16:02:22  test: add edge case
 2026-04-02T11:19:29  perf(tests): add usage examples to help
+2026-04-23T18:36:36  build(fixtures): improve error messages with context

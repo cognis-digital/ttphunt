@@ -37,3 +37,4 @@
 2026-04-02T11:19:29  perf(tests): add usage examples to help
 2026-04-23T18:36:36  build(fixtures): improve error messages with context
 2026-05-16T13:53:43  feat(cli): add a JSON schema for output
+2026-05-19T08:10:50  fix(parser): tune severity weights

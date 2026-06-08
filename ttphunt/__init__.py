@@ -1,28 +1,11 @@
-"""TTPHUNT - Hunt MITRE ATT&CK techniques across logs with a rule pack.
-
-Defensive forensics/triage tool. Stdlib only, zero install.
-"""
-from .core import (
-    Rule,
-    Finding,
-    DEFAULT_RULES,
-    load_rules,
-    load_events,
-    hunt,
-    summarize,
-)
-
-TOOL_NAME = "ttphunt"
-TOOL_VERSION = "1.0.0"
-
-__all__ = [
-    "TOOL_NAME",
-    "TOOL_VERSION",
-    "Rule",
-    "Finding",
-    "DEFAULT_RULES",
-    "load_rules",
-    "load_events",
-    "hunt",
-    "summarize",
-]
+"""ttphunt — part of the Cognis Neural Suite."""
+try:  # re-export the tool's public API + identity from core
+    from ttphunt.core import *  # noqa: F401,F403
+except Exception:  # pragma: no cover
+    pass
+try:
+    from ttphunt.core import TOOL_NAME, TOOL_VERSION
+except Exception:  # pragma: no cover
+    TOOL_NAME = "ttphunt"
+    TOOL_VERSION = "0.1.0"
+__version__ = TOOL_VERSION

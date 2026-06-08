@@ -121,7 +121,17 @@ Pipes into your stack: **SARIF** for code-scanning, **JSON** for anything, an **
 <div align="right"><a href="#top">↑ back to top</a></div>
 
 <a name="install-anywhere"></a>
-## Install anywhere
+## Install — every way, every platform
+
+```bash
+pip install "git+https://github.com/cognis-digital/ttphunt.git"    # pip (works today)
+pipx install "git+https://github.com/cognis-digital/ttphunt.git"   # isolated CLI
+uv tool install "git+https://github.com/cognis-digital/ttphunt.git" # uv
+pip install cognis-ttphunt                                          # PyPI (when published)
+docker run --rm ghcr.io/cognis-digital/ttphunt:latest --help        # Docker
+brew install cognis-digital/tap/ttphunt                             # Homebrew tap
+curl -fsSL https://raw.githubusercontent.com/cognis-digital/ttphunt/main/install.sh | sh
+```
 
 | Linux | macOS | Windows | Docker | Cloud |
 |---|---|---|---|---|

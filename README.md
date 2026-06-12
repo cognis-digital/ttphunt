@@ -16,7 +16,7 @@
 </div>
 
 ```bash
-pip install cognis-ttphunt
+pip install "git+https://github.com/cognis-digital/ttphunt.git"
 ttphunt scan .            # → prioritized findings in seconds
 ```
 
@@ -50,7 +50,7 @@ Hunt MITRE ATT&CK techniques across logs with a rule pack — without standing u
 ## Quick start
 
 ```bash
-pip install cognis-ttphunt
+pip install "git+https://github.com/cognis-digital/ttphunt.git"
 ttphunt --version
 ttphunt scan .                       # scan current project
 ttphunt scan . --format json         # machine-readable

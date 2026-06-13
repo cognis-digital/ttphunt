@@ -20,6 +20,40 @@ pip install cognis-ttphunt
 ttphunt scan .            # → prioritized findings in seconds
 ```
 
+## Usage — step by step
+
+1. **Install** (Python 3.9+):
+
+   ```bash
+   pip install ttphunt
+   ```
+
+2. **Hunt ATT&CK techniques** in a log file (JSON array or JSONL) using the built-in rule pack:
+
+   ```bash
+   ttphunt hunt auth.jsonl
+   ```
+
+3. **Tune the hunt.** Raise the floor with `--min-severity`, scope to specific techniques, or supply your own rule pack:
+
+   ```bash
+   ttphunt hunt auth.jsonl --min-severity high -t T1110 -t T1078 -r my_rules.json
+   ```
+
+4. **Read or export the output.** Emit JSON for tooling, or write an HTML report to a file:
+
+   ```bash
+   ttphunt hunt auth.jsonl --format json -o findings.json
+   ttphunt hunt auth.jsonl --format html -o report.html
+   ```
+
+5. **Inspect the rules in CI.** List the active rule pack to verify coverage as part of a pipeline:
+
+   ```bash
+   ttphunt rules --format json | jq '.[].technique'
+   ```
+
+
 ## Contents
 
 - [Why ttphunt?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)

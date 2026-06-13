@@ -20,6 +20,12 @@ pip install "git+https://github.com/cognis-digital/ttphunt.git"
 ttphunt scan .            # → prioritized findings in seconds
 ```
 
+<!-- cognis:layman:start -->
+## What is this?
+
+TTPHUNT is a command-line security tool that scans log files from computers and servers to automatically detect signs of known attack techniques. It checks your logs against a library of rules based on the MITRE ATT&CK framework — the industry-standard catalog of how hackers actually operate — and reports what suspicious activity it finds, ranked by severity. You point it at a log file, and within seconds it tells you which attack patterns it spotted, such as malicious PowerShell commands, credential theft attempts, or ransomware precursors. It is designed for security teams, DevOps engineers, and incident responders who want a fast, scriptable way to triage logs without standing up heavyweight security infrastructure.
+<!-- cognis:layman:end -->
+
 ## Contents
 
 - [Why ttphunt?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
@@ -47,6 +53,42 @@ Hunt MITRE ATT&CK techniques across logs with a rule pack — without standing u
 <div align="right"><a href="#top">↑ back to top</a></div>
 
 <a name="quick-start"></a>
+<!-- cognis:install:start -->
+## Install
+
+`ttphunt` is source-available (not published to PyPI) — every method below installs
+straight from GitHub. Pick whichever you prefer; the one-line scripts auto-detect
+the best tool available on your machine.
+
+**One-liner (Linux / macOS):**
+```sh
+curl -fsSL https://raw.githubusercontent.com/cognis-digital/ttphunt/HEAD/install.sh | sh
+```
+
+**One-liner (Windows PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/cognis-digital/ttphunt/HEAD/install.ps1 | iex
+```
+
+**Or install manually — any one of:**
+```sh
+pipx install "git+https://github.com/cognis-digital/ttphunt.git"     # isolated (recommended)
+uv tool install "git+https://github.com/cognis-digital/ttphunt.git"  # uv
+pip install "git+https://github.com/cognis-digital/ttphunt.git"      # pip
+```
+
+**From source:**
+```sh
+git clone https://github.com/cognis-digital/ttphunt.git
+cd ttphunt && pip install .
+```
+
+Then run:
+```sh
+ttphunt --help
+```
+<!-- cognis:install:end -->
+
 ## Quick start
 
 ```bash

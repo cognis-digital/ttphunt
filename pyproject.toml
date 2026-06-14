@@ -34,3 +34,6 @@ ttphunt = "ttphunt.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["ttphunt"]
+
+[tool.hatch.metadata]
+allow-direct-references = true

@@ -108,7 +108,10 @@ def _apply_op(value: Any, op: str, operand: Any) -> bool:
         operands = operand if isinstance(operand, list) else [operand]
         return any(text.lower() == _as_text(o).lower() for o in operands)
     if op in ("re", "regex"):
-        return re.search(operand, text, re.IGNORECASE) is not None
+        try:
+            return re.search(operand, text, re.IGNORECASE) is not None
+        except re.error as exc:
+            raise ValueError(f"Invalid regex pattern {operand!r}: {exc}") from exc
     if op in ("startswith",):
         return text.lower().startswith(_as_text(operand).lower())
     if op in ("endswith",):
@@ -164,14 +167,25 @@ def load_events_from_text(text: str) -> List[Dict[str, Any]]:
         return [_normalize_event(e) for e in events]
     except json.JSONDecodeError:
         pass
-    # Fall back to JSONL.
-    for line in text.splitlines():
+    # Fall back to JSONL — skip and report malformed lines rather than crashing.
+    bad_lines: List[int] = []
+    for lineno, line in enumerate(text.splitlines(), start=1):
         line = line.strip()
         if not line:
             continue
-        obj = json.loads(line)
+        try:
+            obj = json.loads(line)
+        except json.JSONDecodeError:
+            bad_lines.append(lineno)
+            continue
         if isinstance(obj, dict):
             events.append(_normalize_event(obj))
+    if bad_lines and not events:
+        # Every non-blank line failed to parse — surface a clear error.
+        raise ValueError(
+            f"Could not parse input as JSON array or JSONL "
+            f"(first bad line: {bad_lines[0]})"
+        )
     return events
 
 
@@ -180,18 +194,40 @@ def load_rules(path: str) -> List[Rule]:
         data = json.load(fh)
     if isinstance(data, dict):
         data = data.get("rules", [])
-    return [_rule_from_dict(d) for d in data]
+    if not isinstance(data, list):
+        raise ValueError(
+            f"Rule pack must be a JSON array or object with a 'rules' key, "
+            f"got {type(data).__name__}"
+        )
+    rules = []
+    for i, d in enumerate(data):
+        if not isinstance(d, dict):
+            raise ValueError(f"Rule at index {i} is not a JSON object")
+        rules.append(_rule_from_dict(d, index=i))
+    return rules
 
 
-def _rule_from_dict(d: Dict[str, Any]) -> Rule:
+def _rule_from_dict(d: Dict[str, Any], index: Optional[int] = None) -> Rule:
+    if "id" not in d:
+        ctx = f" (index {index})" if index is not None else ""
+        raise ValueError(f"Rule{ctx} is missing required field 'id'")
+    severity = d.get("severity", "medium")
+    if severity.lower() not in SEVERITY_ORDER:
+        raise ValueError(
+            f"Rule '{d['id']}' has unknown severity '{severity}'; "
+            f"must be one of {list(SEVERITY_ORDER)}"
+        )
+    detection = d.get("detection", {})
+    if not isinstance(detection, dict):
+        raise ValueError(f"Rule '{d['id']}' 'detection' must be a JSON object")
     return Rule(
         id=d["id"],
         title=d.get("title", d["id"]),
         technique=d.get("technique", ""),
         tactic=d.get("tactic", ""),
-        severity=d.get("severity", "medium"),
+        severity=severity,
         description=d.get("description", ""),
-        detection=d.get("detection", {}),
+        detection=detection,
     )
 
 

@@ -173,7 +173,11 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def _cmd_rules(args) -> int:
-    rules = load_rules(args.rules) if args.rules else DEFAULT_RULES
+    try:
+        rules = load_rules(args.rules) if args.rules else DEFAULT_RULES
+    except (OSError, ValueError, KeyError) as exc:
+        print(f"{TOOL_NAME}: error loading rules: {exc}", file=sys.stderr)
+        return 2
     if args.format == "json":
         print(json.dumps([
             {"id": r.id, "title": r.title, "technique": r.technique,
@@ -217,8 +221,12 @@ def _cmd_hunt(args) -> int:
         out = _render_table(findings, summary)
 
     if args.output:
-        with open(args.output, "w", encoding="utf-8") as fh:
-            fh.write(out)
+        try:
+            with open(args.output, "w", encoding="utf-8") as fh:
+                fh.write(out)
+        except OSError as exc:
+            print(f"{TOOL_NAME}: error writing output file '{args.output}': {exc}", file=sys.stderr)
+            return 2
         print(f"{TOOL_NAME}: wrote {args.format} report -> {args.output} "
               f"({summary['total']} finding(s))", file=sys.stderr)
     else:
@@ -234,10 +242,17 @@ def main(argv: Optional[List[str]] = None) -> int:
     if not args.command:
         parser.print_help()
         return 0
-    if args.command == "rules":
-        return _cmd_rules(args)
-    if args.command == "hunt":
-        return _cmd_hunt(args)
+    try:
+        if args.command == "rules":
+            return _cmd_rules(args)
+        if args.command == "hunt":
+            return _cmd_hunt(args)
+    except KeyboardInterrupt:
+        print(f"\n{TOOL_NAME}: interrupted", file=sys.stderr)
+        return 130
+    except Exception as exc:  # noqa: BLE001
+        print(f"{TOOL_NAME}: unexpected error: {exc}", file=sys.stderr)
+        return 1
     parser.print_help()
     return 0
 

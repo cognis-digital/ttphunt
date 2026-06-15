@@ -311,7 +311,7 @@ DEFAULT_RULES: List[Rule] = [
             "severity": "medium",
             "description": "reg add writing to a Run/RunOnce autostart key.",
             "detection": {
-                "cmdline": {"re": r"reg(\.exe)?\s+add.*\\\\(run|runonce)\b"},
+                "cmdline": {"re": r"reg(\.exe)?\s+add.*\\+(run|runonce)\b"},
             },
         },
         {

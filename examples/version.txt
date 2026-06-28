@@ -1,0 +1,3 @@
+$ ttphunt-emit --version
+
+ttphunt 0.1.0

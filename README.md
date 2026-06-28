@@ -20,6 +20,54 @@ pip install cognis-ttphunt
 ttphunt scan .            # → prioritized findings in seconds
 ```
 
+
+<!-- cognis:example:start -->
+## 🔎 Example output
+
+Real, reproducible output from the tool — runs offline:
+
+```console
+$ ttphunt-emit --version
+ttphunt 0.1.0
+```
+
+```console
+$ ttphunt-emit --help
+usage: ttphunt [-h] [--version] {hunt,rules} ...
+
+Hunt MITRE ATT&CK techniques across logs with a rule pack.
+
+positional arguments:
+  {hunt,rules}
+    hunt        Scan a log file for ATT&CK techniques.
+    rules       List rules in the active pack.
+
+options:
+  -h, --help    show this help message and exit
+  --version     show program's version number and exit
+```
+
+```console
+$ ttphunt-emit rules
+ttphunt: 12 rule(s)
+  [HIGH    ] T1059.001    ttp-powershell-encoded           PowerShell Encoded Command
+  [HIGH    ] T1059.001    ttp-powershell-download-cradle   PowerShell Download Cradle
+  [HIGH    ] T1105        ttp-certutil-download            Certutil Used to Download/Decode
+  [MEDIUM  ] T1047        ttp-wmic-process-call            WMIC Remote/Local Process Creation
+  [CRITICAL] T1490        ttp-bcdedit-recovery-disable     Inhibit System Recovery (bcdedit/vssadmin/wbadmin)
+  [MEDIUM  ] T1547.001    ttp-registry-run-key             Run Key Persistence via reg.exe
+  [MEDIUM  ] T1053.005    ttp-scheduled-task-create        Scheduled Task Creation
+  [HIGH    ] T1218.005    ttp-mshta-execution              Mshta Remote Script Execution
+  [MEDIUM  ] T1218.011    ttp-rundll32-suspicious          Rundll32 Proxy Execution
+  [HIGH    ] T1070.001    ttp-clear-event-logs             Windows Event Log Cleared
+  [MEDIUM  ] T1136.001    ttp-net-user-add                 Local Account Created via net user
+  [LOW     ] T1110        ttp-failed-logon-burst           Failed Logon (Brute Force Candidate)
+```
+
+> Blocks above are real `ttphunt` output — reproduce them from a clone.
+
+<!-- cognis:example:end -->
+
 ## Usage — step by step
 
 1. **Install** (Python 3.9+):

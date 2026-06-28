@@ -1,0 +1,14 @@
+$ ttphunt-emit --help
+
+usage: ttphunt [-h] [--version] {hunt,rules} ...
+
+Hunt MITRE ATT&CK techniques across logs with a rule pack.
+
+positional arguments:
+  {hunt,rules}
+    hunt        Scan a log file for ATT&CK techniques.
+    rules       List rules in the active pack.
+
+options:
+  -h, --help    show this help message and exit
+  --version     show program's version number and exit

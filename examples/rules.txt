@@ -1,0 +1,15 @@
+$ ttphunt-emit rules
+
+ttphunt: 12 rule(s)
+  [HIGH    ] T1059.001    ttp-powershell-encoded           PowerShell Encoded Command
+  [HIGH    ] T1059.001    ttp-powershell-download-cradle   PowerShell Download Cradle
+  [HIGH    ] T1105        ttp-certutil-download            Certutil Used to Download/Decode
+  [MEDIUM  ] T1047        ttp-wmic-process-call            WMIC Remote/Local Process Creation
+  [CRITICAL] T1490        ttp-bcdedit-recovery-disable     Inhibit System Recovery (bcdedit/vssadmin/wbadmin)
+  [MEDIUM  ] T1547.001    ttp-registry-run-key             Run Key Persistence via reg.exe
+  [MEDIUM  ] T1053.005    ttp-scheduled-task-create        Scheduled Task Creation
+  [HIGH    ] T1218.005    ttp-mshta-execution              Mshta Remote Script Execution
+  [MEDIUM  ] T1218.011    ttp-rundll32-suspicious          Rundll32 Proxy Execution
+  [HIGH    ] T1070.001    ttp-clear-event-logs             Windows Event Log Cleared
+  [MEDIUM  ] T1136.001    ttp-net-user-add                 Local Account Created via net user
+  [LOW     ] T1110        ttp-failed-logon-burst           Failed Logon (Brute Force Candidate)
